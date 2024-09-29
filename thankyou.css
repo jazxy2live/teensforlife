@@ -1,53 +1,35 @@
-/* General Styles */
 body {
-    font-family: 'Arial', sans-serif; /* Use a clean and modern font */
-    background-color: #eaf4ff; /* Light blue background for a soft look */
-    color: #333; /* Dark text for contrast */
-    margin: 0; /* Remove default margin */
-    padding: 0; /* Remove default padding */
-    display: flex; /* Center the content */
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    height: 100vh; /* Full viewport height */
-    text-align: center; /* Center text */
+    background-color: #f0f8ff; /* Light background */
+    color: #333; /* Text color */
+    font-family: Arial, sans-serif; /* Font style */
 }
 
-/* Container for the thank you message */
 .thank-you-container {
-    background-color: #ffffff; /* White background for the content area */
-    border-radius: 10px; /* Rounded corners */
-    padding: 40px; /* Padding around the content */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
-    max-width: 500px; /* Limit the width for better readability */
+    max-width: 600px; /* Set a max width */
+    margin: 0 auto; /* Center the container */
+    padding: 20px; /* Add some padding */
+    text-align: center; /* Center the text */
+    background-color: rgba(0, 102, 204, 0.1); /* Light blue tint */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
-/* Heading Styles */
 h1 {
-    color: #007bff; /* Blue color for the heading */
-    margin-bottom: 20px; /* Space below the heading */
-    font-size: 2.5em; /* Increase font size for emphasis */
+    color: #0066cc; /* Blue text */
 }
 
-/* Paragraph Styles */
-p {
-    font-size: 1.2em; /* Slightly larger font size for paragraphs */
-    line-height: 1.5; /* Increased line height for better readability */
-    margin-bottom: 20px; /* Space below paragraphs */
-}
-
-/* Button Styles */
 .button {
-    background-color: #007bff; /* Blue background for buttons */
-    color: #ffffff; /* White text for buttons */
-    border: none; /* No border */
-    border-radius: 5px; /* Slightly rounded corners */
-    padding: 10px 20px; /* Padding around the button */
-    font-size: 1em; /* Normal font size */
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: background-color 0.3s ease; /* Smooth transition on hover */
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #0066cc; /* Button color */
+    color: white; /* Button text color */
+    text-decoration: none; /* Remove underline */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s; /* Smooth transition */
 }
 
-/* Button Hover Effect */
 .button:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+    background-color: #004999; /* Darker blue on hover */
 }
+
