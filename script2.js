@@ -31,7 +31,7 @@ async function googleLogin() {
         await storeUserData(user);
 
         // Redirect to your main page or dashboard after successful login
-        window.location.href = 'http://127.0.0.1:8080/main.html'; // Change this to your main page URL
+        window.location.href = 'thankyou.html'; // Change this to your main page URL
     } catch (error) {
         console.error('Error during Google login:', error);
     }
