@@ -2,27 +2,34 @@ body {
     background-color: #f0f8ff; /* Light background */
     color: #333; /* Text color */
     font-family: Arial, sans-serif; /* Font style */
+    margin: 0;
+    padding: 0;
 }
 
 .thank-you-container {
     max-width: 600px; /* Set a max width */
-    margin: 0 auto; /* Center the container */
+    margin: 50px auto; /* Center the container with top margin */
     padding: 20px; /* Add some padding */
     text-align: center; /* Center the text */
-    background-color: rgba(0, 102, 204, 0.1); /* Light blue tint */
+    background-color: white; /* White background for the container */
     border-radius: 8px; /* Rounded corners */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
 h1 {
-    color: #0066cc; /* Blue text */
+    color: #333; /* Dark text color */
+    margin-bottom: 20px; /* Spacing below the heading */
+}
+
+p {
+    margin-bottom: 20px; /* Spacing below the paragraph */
 }
 
 .button {
     display: inline-block;
     margin-top: 20px;
     padding: 10px 20px;
-    background-color: #0066cc; /* Button color */
+    background-color: #007bff; /* Button color */
     color: white; /* Button text color */
     text-decoration: none; /* Remove underline */
     border-radius: 5px; /* Rounded corners */
@@ -30,6 +37,14 @@ h1 {
 }
 
 .button:hover {
-    background-color: #004999; /* Darker blue on hover */
+    background-color: #0056b3; /* Darker shade on hover */
 }
 
+/* Add some responsive styling */
+@media (max-width: 600px) {
+    .thank-you-container {
+        padding: 15px; /* Less padding on smaller screens */
+    }
+}
+
+    
