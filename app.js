@@ -8,81 +8,56 @@ const firebaseConfig = {
     appId: "1:572079189052:web:d8502932dec58833a1a739",
     measurementId: "G-NEKSRBQZ4D"
   };
+
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
   
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-
-// Get references to auth and firestore
-const auth = firebase.auth();
-const db = firebase.firestore();
-
-// DOM elements
-const loginForm = document.getElementById('loginForm');
-const loginContainer = document.getElementById('loginContainer');
-const dashboardContainer = document.getElementById('dashboardContainer');
-const userInfo = document.getElementById('userInfo');
-const logoutBtn = document.getElementById('logoutBtn');
-
-// Login form submit handler
-loginForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const email = loginForm.email.value;
-    const password = loginForm.password.value;
-
-    auth.signInWithEmailAndPassword(email, password)
-        .then((userCredential) => {
-            console.log('User logged in:', userCredential.user);
-            loginForm.reset();
-        })
-        .catch((error) => {
-            console.error('Login error:', error.message);
-            alert(error.message);
-        });
-});
-
-// Logout button handler
-logoutBtn.addEventListener('click', () => {
-    auth.signOut().then(() => {
-        console.log('User signed out');
+  // Get elements from DOM
+  const loginBtn = document.getElementById('loginBtn');
+  const logoutBtn = document.getElementById('logoutBtn');
+  const dashboard = document.getElementById('dashboard');
+  const userName = document.getElementById('userName');
+  const userPic = document.getElementById('userPic');
+  
+  // Set up Google sign-in method
+  const provider = new firebase.auth.GoogleAuthProvider();
+  
+  // Google Login
+  loginBtn.addEventListener('click', () => {
+    firebase.auth()
+      .signInWithPopup(provider)
+      .then((result) => {
+        const user = result.user;
+        displayUserInfo(user); // Call function to display user's information
+      })
+      .catch((error) => {
+        console.error("Error during login:", error);
+      });
+  });
+  
+  // Google Logout
+  logoutBtn.addEventListener('click', () => {
+    firebase.auth().signOut().then(() => {
+      dashboard.style.display = 'none';
+      loginBtn.style.display = 'block';
+      logoutBtn.style.display = 'none';
     }).catch((error) => {
-        console.error('Logout error:', error);
+      console.error("Error during logout:", error);
     });
-});
-
-// Auth state change listener
-auth.onAuthStateChanged((user) => {
+  });
+  
+  // Function to display user info after login
+  function displayUserInfo(user) {
+    dashboard.style.display = 'block';
+    loginBtn.style.display = 'none';
+    logoutBtn.style.display = 'block';
+    userName.textContent = user.displayName;
+    userPic.src = user.photoURL;
+  }
+  
+  // Check if a user is already logged in (session persistence)
+  firebase.auth().onAuthStateChanged((user) => {
     if (user) {
-        // User is signed in
-        loginContainer.style.display = 'none';
-        dashboardContainer.style.display = 'block';
-        loadUserData(user);
-    } else {
-        // User is signed out
-        loginContainer.style.display = 'block';
-        dashboardContainer.style.display = 'none';
-        userInfo.innerHTML = '';
+      displayUserInfo(user); // If user is already logged in, display their info
     }
-});
-
-// Load user data from Firestore
-function loadUserData(user) {
-    db.collection('users').doc(user.uid).get()
-        .then((doc) => {
-            if (doc.exists) {
-                const data = doc.data();
-                userInfo.innerHTML = `
-                    <h2>Welcome, ${data.name || 'User'}!</h2>
-                    <p>Email: ${user.email}</p>
-                    <p>Account created: ${user.metadata.creationTime}</p>
-                `;
-            } else {
-                console.log('No user data found');
-                userInfo.innerHTML = '<p>Please complete your profile</p>';
-            }
-        })
-        .catch((error) => {
-            console.error('Error getting user data:', error);
-        });
-}
-
-// You can add more functions here for user registration, profile updates, etc.
+  });
