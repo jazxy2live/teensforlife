@@ -1,0 +1,276 @@
+/* Navbar Styles */
+@font-face {
+    font-family: "pixel";
+    src: url(Minecraft.ttf);
+}
+
+.navbar {
+
+    position: fixed; /* Fixed position */
+    top: 0; /* Fixed to the top */
+    left: 0; /* Align to the left */
+    width: 100%; /* Full width */
+    z-index: 1000; /* Ensure it appears above other content */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    
+    padding-right: 30px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-bottom: 5px solid #333; /* Thick border for pixel effect */
+
+    background: linear-gradient(45deg, #ffffff, #ffffff);
+    background-size: 300% 300%;
+    animation: gradientAnimation 10s ease infinite;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-family: "pixel"; 
+}
+    
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column; /* Stack items */
+    }
+}
+
+
+.logo h1 {
+    font-size: 24px;
+    color: #007BFF;
+}
+
+/* Navigation Links */
+.nav-links {
+    display: flex; /* Use flexbox for horizontal alignment */
+    align-items: center; /* Align items vertically centered */
+    list-style: none; /* Remove bullet points */
+    
+}
+
+.nav-links ul {
+    list-style: none;
+    display: flex; /* Ensure ul is also a flex container */
+    padding: 0; /* Remove padding from ul */
+    margin: 0; /* Remove margin from ul */
+}
+
+.nav-links li {
+    margin: 0 10px; /* Space between items */
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    padding: 10px 15px;
+    border: 2px solid #333; /* Pixelated button border */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.1s;
+}
+
+.nav-links a:hover {
+    background-color: #00ff15a4; /* Change color on hover */
+}
+
+/* Login Button Styling */
+.login-btn {
+    background-color: #00ff11; /* Blue background for login button */
+    color: white; /* White text for login button */
+}
+
+
+/* CATEGORY SECTION */
+
+.featured-resources {
+    background: rgba(255, 255, 255, 0.9); /* Light background for readability */
+    padding: 40px;
+    text-align: center;
+    font-family: "pixel";
+    background-image: url(nightsky.gif);
+    background-size: cover;
+}
+
+.featured-resources h2 {
+    font-family: 'Pixel', sans-serif;
+    color: #ffffff; /* Dark text color for contrast */
+    margin-bottom: 30px;
+    padding-top: 60px;
+}
+
+.resource-card {
+    background: #f4f4f4; /* Light gray background for cards */
+    border: 2px dashed #ccc; /* Dotted border */
+    border-radius: 10px;
+    padding: 60px;
+    margin: 15px;
+    display: inline-block; /* Align cards side by side */
+    width: calc(33% - 40px); /* Three cards per row with margin */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resource-card h3 {
+    font-family: 'Pixel', sans-serif;
+    color: #555; /* Slightly lighter text color */
+    margin: 10px 0;
+}
+
+.resource-card p {
+    color: #666; /* Medium text color */
+}
+
+.resource-link {
+    display: inline-block;
+    padding: 10px 15px;
+    background: #007bff; /* Bootstrap primary color */
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.resource-link:hover {
+    background: #0056b3; /* Darker blue on hover */
+}
+
+
+/*footer*/
+
+/* Footer Section */
+/* Footer Section */
+footer {
+    background-color: #222; /* Dark background */
+    padding: 40px 0;
+    color: white;
+    font-family: 'Pixel', sans-serif; /* Matching vibe */
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+/* Footer Column Styling */
+.footer-column {
+    flex-basis: 45%;
+    margin-bottom: 20px;
+}
+
+.footer-column h3 {
+    font-size: 18px;
+    color: #ff9800; /* Bright color for section headers */
+    margin-bottom: 10px;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 8px;
+}
+
+.footer-column ul li a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-column ul li a:hover {
+    color: #ff9800; /* Hover effect */
+}
+
+/* Social Media Icons */
+.social-media {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.social-media img {
+    width: 30px; /* Icon size */
+    height: 30px;
+    transition: transform 0.3s ease;
+}
+
+.social-media img:hover {
+    transform: scale(1.2); /* Slight hover effect */
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #bbb; /* Softer text color */
+}
+
+.footer-bottom p {
+    margin: 5px 0;
+}
+
+.footer-bottom p:first-child {
+    font-weight: bold;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-column {
+        flex-basis: 100%;
+        text-align: center;
+    }
+
+    .social-media {
+        justify-content: center;
+    }
+}
+
+
+/*cards for books images*/
+
+.card-container {
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Stack cards vertically */
+    align-items: center; /* Center-align cards horizontally */
+    margin: 20px; /* Add margin around the container */
+}
+
+.resource-card {
+    text-align: center; /* Center-align text */
+    padding: 20px; /* Add padding around the card */
+    background-color: #f0f0f0; /* Background color */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow */
+    margin-bottom: 20px; /* Space below the main card */
+}
+
+.book-images {
+    display: flex; /* Use flexbox to align images */
+    justify-content: space-around; /* Space out the images evenly */
+    margin-top: 10px; /* Add space above the images */
+}
+
+.book-image {
+    width: 80px; /* Adjust the image width as needed */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 4px; /* Rounded corners for images */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow to images */
+}
+
+.other-card {
+    background-color: #e0e0e0; /* Background color for other cards */
+    padding: 15px; /* Padding for the cards */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow */
+    margin: 10px; /* Margin around each card */
+    width: 300px; /* Fixed width for other cards */
+    text-align: center; /* Center-align text */
+}

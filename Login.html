@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - TeensForLife</title>
+    <link rel="stylesheet" href="login.css">
+    
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="app.js"></script>
+
+    
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">
+            <h1>TeensForLife</h1>
+        </div>
+        <nav class="nav-links">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="#contact" class="login-btn">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <div class="container">
+        <form class="login-form">
+            <h1>Login to Your Account</h1>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Enter your username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            </div>
+            <button type="submit" class="login-btn">Login</button>
+            <p class="register-link">Don't have an account? <a href="#">Register here</a></p>
+        </form>
+    </div>
+
+    <div id="dashboardContainer" class="container" style="display:none;">
+        <h1>Welcome to Your Dashboard</h1>
+        <div id="userInfo"></div>
+        <button id="logoutBtn" class="btn">Logout</button>
+    </div>
+
+    
+
+    
+
+</body>
+</html>

@@ -1,0 +1,176 @@
+@font-face {
+    font-family: "pixel";
+    src: url(Minecraft.ttf);
+
+
+}
+@font-face {
+    font-family: "pixel2";
+    src: url(joystix\ monospace.otf);
+
+
+}
+
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #e0f7fa;
+    margin: 0;
+    padding: 0;
+    height: 100vh; /* Full viewport height */
+    display: flex; /* Use flexbox for centering */
+    justify-content: center; /* Horizontally center */
+    align-items: center; /* Vertically center */
+}
+.navbar {
+
+    position: fixed; /* Fixed position */
+    top: 0; /* Fixed to the top */
+    left: 0; /* Align to the left */
+    width: 100%; /* Full width */
+    z-index: 1000; /* Ensure it appears above other content */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    
+    padding-right: 30px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-bottom: 5px solid #333; /* Thick border for pixel effect */
+
+    background: linear-gradient(45deg, #ffffff, #ffffff);
+    background-size: 300% 300%;
+    animation: gradientAnimation 10s ease infinite;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-family: "pixel"; 
+}
+    
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column; /* Stack items */
+    }
+}
+
+
+.logo h1 {
+    font-size: 24px;
+    color: #007BFF;
+}
+
+/* Navigation Links */
+.nav-links {
+    display: flex; /* Use flexbox for horizontal alignment */
+    align-items: center; /* Align items vertically centered */
+    list-style: none; /* Remove bullet points */
+    
+}
+
+.nav-links ul {
+    list-style: none;
+    display: flex; /* Ensure ul is also a flex container */
+    padding: 0; /* Remove padding from ul */
+    margin: 0; /* Remove margin from ul */
+}
+
+.nav-links li {
+    margin: 0 10px; /* Space between items */
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    padding: 10px 15px;
+    border: 2px solid #333; /* Pixelated button border */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.1s;
+}
+
+.nav-links a:hover {
+    background-color: #00ff15a4; /* Change color on hover */
+}
+
+
+/*LOGIN SECTION*/
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
+}
+
+.login-form h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #555;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+.login-btn {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-btn:hover {
+    background-color: #45a049;
+}
+
+.register-link {
+    text-align: center;
+    margin-top: 1rem;
+    color: #666;
+}
+
+.register-link a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 1rem;
+    }
+}
