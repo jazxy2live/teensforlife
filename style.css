@@ -121,6 +121,7 @@ body {
 /* Navigation Links */
 .nav-links li {
     margin: 0 10px; /* Space between items */
+    list-style-type: none; /* Removes bullet points */
 }
 
 .nav-links a {
