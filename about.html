@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About us</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
     <link rel="stylesheet" href="about.css"
 
 </head>
@@ -12,6 +13,10 @@
     <header class="navbar">
         <div class="logo">
             <h1>TeensForLife</h1>
+        </div>
+        <!-- Toggle icon for mobile -->
+        <div class="toggle">
+            <i class="fas fa-bars"></i> <!-- Font Awesome hamburger icon -->
         </div>
         <nav class="nav-links">
             <ul>
@@ -22,6 +27,21 @@
             </ul>
         </nav>
     </header>
+
+    <script>
+        // Get the toggle icon and navigation links
+        const toggle = document.querySelector('.toggle');
+        const navLinks = document.querySelector('.nav-links');
+    
+        // Add click event to toggle
+        toggle.addEventListener('click', () => {
+            // Toggle the active class on navLinks
+            navLinks.classList.toggle('active');
+    
+            // Rotate the toggle icon
+            toggle.classList.toggle('rotated');
+        });
+    </script>
 
     <header class="hero">
         <h1>About TeensForLife</h1>
@@ -86,3 +106,5 @@ And that’s how TeensForLife was born.
 
 </body>
 </html>
+
+       
