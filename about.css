@@ -11,62 +11,117 @@ body {
     background-size: cover;
 }
 
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* General Reset for Margins and Padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+/* Font Style */
+body {
+    font-family: 'pixel', cursive; /* Pixel-style font */
+    background-color: #f0f0f0; /* Light background */
+}
+
+/* Navigation Bar Styling */
+/* Navigation Bar Styling */
 .navbar {
-
-    position: fixed; /* Fixed position */
-    top: 0; /* Fixed to the top */
-    left: 0; /* Align to the left */
-    width: 100%; /* Full width */
-    z-index: 1000; /* Ensure it appears above other content */
-
-
-
-
-
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 5px;
-    
-    padding-right: 30px;
+    padding: 20px;
     background-color: rgba(255, 255, 255, 0.9);
-    border-bottom: 5px solid #333; /* Thick border for pixel effect */
-
+    border-bottom: 5px solid #333;
     background: linear-gradient(45deg, #ffffff, #ffffff);
     background-size: 300% 300%;
     animation: gradientAnimation 10s ease infinite;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    
-    
 }
-    
+
+.nav-links ul {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    justify-content: space-around;
+    list-style-type: none;
+}
+
 @media (max-width: 768px) {
-    nav ul {
-        flex-direction: column; /* Stack items */
+    .navbar {
+        flex-wrap: wrap;
+    }
+
+    .nav-links {
+        width: 100%;
+        order: 3;
+    }
+
+    .nav-links ul {
+        flex-direction: column;
+        display: none;
+        position: absolute;
+        top: 100%; /* Changed from 60px to 100% */
+        left: 0;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 5px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        padding: 10px 0;
+        list-style-type: none;
+    }
+
+    .nav-links.active ul {
+        display: flex;
+    }
+
+    .nav-links li {
+        margin: 10px 0; /* Changed from 0px 10 to 10px 0 */
+        text-align: center;
+    }
+
+    .navbar .toggle {
+        display: block;
+        order: 2;
+    }
+
+    .logo {
+        order: 1;
     }
 }
 
+.nav-links a {
+    display: block; /* Added to ensure full-width clickable area */
+    text-decoration: none;
+    color: #333;
+    padding: 10px 15px;
+    border: 2px solid #333;
+    border-radius: 5px;
+    transition: background-color 0.1s;
+}
 
+.login-btn {
+    background-color: #00ff11;
+    color: white;
+}
 .logo h1 {
     font-size: 24px;
     color: #007BFF;
 }
 
 /* Navigation Links */
-.nav-links {
-    display: flex; /* Use flexbox for horizontal alignment */
-    align-items: center; /* Align items vertically centered */
-    list-style: none; /* Remove bullet points */
-    
-}
-
-.nav-links ul {
-    list-style: none;
-    display: flex; /* Ensure ul is also a flex container */
-    padding: 0; /* Remove padding from ul */
-    margin: 0; /* Remove margin from ul */
-}
-
 .nav-links li {
     margin: 0 10px; /* Space between items */
 }
@@ -90,23 +145,59 @@ body {
     color: white; /* White text for login button */
 }
 
+/* Add styles for the toggle button */
+.toggle {
+    display: none; /* Initially hide toggle for desktop */
+}
+
 
 /*main section*/
+/* Hero section styles */
 .hero {
-   
     color: white;
     text-align: center;
-    padding: 160px 0px;
+    padding: 80px 20px; /* Reduced padding, added horizontal padding */
 }
 
-h1 {
-    font-size: 3rem;
+.hero h1 {
+    font-size: 2.5rem; /* Slightly smaller base size */
+    margin-bottom: 0.5rem; /* Space between h1 and h2 */
+    padding-top: 80px;
 }
 
-h2 {
-    font-size: 2rem;
+.hero h2 {
+    font-size: 1.5rem; /* Smaller subtitle */
+    font-weight: normal; /* Optional: makes the subtitle less prominent */
 }
 
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+    .hero {
+        padding: 60px 15px;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero h2 {
+        font-size: 1.25rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .hero {
+        padding: 40px 10px;
+    }
+
+    .hero h1 {
+        font-size: 1.75rem;
+    }
+
+    .hero h2 {
+        font-size: 1rem;
+    }
+}
 
 /*THIS IS THE BLOG SECTION*/
 
