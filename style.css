@@ -371,8 +371,9 @@ body {
 }
 
 .section-title {
-    margin-bottom: 20px;
-    font-size: 28px;
+    margin-bottom: 40px;
+    font-size: 24px;
+    
     
 }
 
@@ -392,6 +393,7 @@ body {
     overflow: hidden;
     border-radius: 15px;
     margin-bottom: 20px;
+    margin-top: 20px
 }
 
 .gif-image {
