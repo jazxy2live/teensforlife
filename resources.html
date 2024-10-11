@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resources - TeensForLife</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
     <link rel="stylesheet" href="resources.css">
 </head>
 <body>
@@ -12,15 +13,37 @@
         <div class="logo">
             <h1>TeensForLife</h1>
         </div>
+        <!-- Toggle icon for mobile -->
+        <div class="toggle">
+            <i class="fas fa-bars"></i> <!-- Font Awesome hamburger icon -->
+        </div>
         <nav class="nav-links">
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
-                <li><a href="#resources">Resources</a></li>
-                <li><a href="#contact" class="login-btn">Login</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="Login.html" class="login-btn">Login</a></li>
             </ul>
         </nav>
     </header>
+
+    <script>
+        // Get the toggle icon and navigation links
+        const toggle = document.querySelector('.toggle');
+        const navLinks = document.querySelector('.nav-links');
+    
+        // Add click event to toggle
+        toggle.addEventListener('click', () => {
+            // Toggle the active class on navLinks
+            navLinks.classList.toggle('active');
+    
+            // Rotate the toggle icon
+            toggle.classList.toggle('rotated');
+        });
+    </script>
+
+
+
 
 
     <section class="featured-resources">
@@ -68,8 +91,8 @@
             <div class="footer-column">
                 <h3>Quick Links</h3>
                 <ul>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#resources">Resources</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="resources.html">Resources</a></li>
                     <li><a href="#events">Upcoming Events</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
