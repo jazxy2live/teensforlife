@@ -422,6 +422,18 @@ body {
     border-radius: 15px;
 }
 
+@media (min-width: 769px) {
+    .section-title {
+        font-size: 28px; /* Larger font for desktop */
+        margin-bottom: 50px; /* More space on desktop */
+    }
+
+    .gif-card {
+        margin-top: 30px; /* Add top margin if needed */
+        margin-bottom: 40px; /* More margin between elements on larger screens */
+    }
+}
+
 @media (max-width: 768px) {
     .section-title {
         font-size: 24px;
