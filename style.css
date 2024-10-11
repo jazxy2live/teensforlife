@@ -7,6 +7,13 @@
     src: url(PressStart2P-Regular\ copy.ttf);
 }
 
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 /* General Reset for Margins and Padding */
 * {
     margin: 0;
@@ -22,59 +29,92 @@ body {
 
 /* Navigation Bar Styling */
 .navbar {
-
-    position: fixed; /* Fixed position */
-    top: 0; /* Fixed to the top */
-    left: 0; /* Align to the left */
-    width: 100%; /* Full width */
-    z-index: 1000; /* Ensure it appears above other content */
-
-
-
-
-
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px;
     background-color: rgba(255, 255, 255, 0.9);
-    border-bottom: 5px solid #333; /* Thick border for pixel effect */
-
+    border-bottom: 5px solid #333;
     background: linear-gradient(45deg, #ffffff, #ffffff);
     background-size: 300% 300%;
     animation: gradientAnimation 10s ease infinite;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    
-    
 }
-    
+
+.nav-links ul {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    justify-content: space-around;
+}
+
 @media (max-width: 768px) {
-    nav ul {
-        flex-direction: column; /* Stack items */
+    .navbar {
+        flex-wrap: wrap;
+    }
+
+    .nav-links {
+        width: 100%;
+        order: 3;
+    }
+
+    .nav-links ul {
+        flex-direction: column;
+        display: none;
+        position: absolute;
+        top: 100%; /* Changed from 60px to 100% */
+        left: 0;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 5px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        padding: 10px 0;
+    }
+
+    .nav-links.active ul {
+        display: flex;
+    }
+
+    .nav-links li {
+        margin: 10px 0; /* Changed from 0px 10 to 10px 0 */
+        text-align: center;
+    }
+
+    .navbar .toggle {
+        display: block;
+        order: 2;
+    }
+
+    .logo {
+        order: 1;
     }
 }
 
+.nav-links a {
+    display: block; /* Added to ensure full-width clickable area */
+    text-decoration: none;
+    color: #333;
+    padding: 10px 15px;
+    border: 2px solid #333;
+    border-radius: 5px;
+    transition: background-color 0.1s;
+}
 
+.login-btn {
+    background-color: #00ff11;
+    color: white;
+}
 .logo h1 {
     font-size: 24px;
     color: #007BFF;
 }
 
 /* Navigation Links */
-.nav-links {
-    display: flex; /* Use flexbox for horizontal alignment */
-    align-items: center; /* Align items vertically centered */
-    list-style: none; /* Remove bullet points */
-    
-}
-
-.nav-links ul {
-    list-style: none;
-    display: flex; /* Ensure ul is also a flex container */
-    padding: 0; /* Remove padding from ul */
-    margin: 0; /* Remove margin from ul */
-}
-
 .nav-links li {
     margin: 0 10px; /* Space between items */
 }
@@ -98,12 +138,20 @@ body {
     color: white; /* White text for login button */
 }
 
+/* Add styles for the toggle button */
+.toggle {
+    display: none; /* Initially hide toggle for desktop */
+}
 
+
+  
 /* Main Section Styling */
 .main-section {
     text-align: center;
     padding: 20px;
     background: url('pixelart\ copy.gif') no-repeat center center fixed; /* Set your GIF */
+    width: 100%;
+    max-width: 100%;
     background-size: cover; /* Make sure it covers the section */
     color: white; /* Adjust text color for better readability */
     min-height: 100vh; /* Ensure the section covers full height of the viewport */
@@ -112,7 +160,9 @@ body {
     justify-content: center; /* Center content vertically */
     align-items: center; /* Center content horizontally */
     position: relative; /* Needed for overlay if using one */
+    object-fit: cover;
     z-index: 1;
+    
   }
   
   /* Optional Overlay to make the text more readable */
@@ -127,24 +177,22 @@ body {
     z-index: -1; /* Place it behind the content */
   }
   
-  /* Heading */
-  .main-heading {
+  /* Base styles (keep your existing styles here) */
+.main-heading {
     font-size: 36px;
-    color: #fff; /* White text for contrast */
+    color: #fff;
     font-family: "pixel", sans-serif;
-  }
-  
-  /* Paragraph */
-  .main-paragraph {
+}
+
+.main-paragraph {
     font-size: 18px;
-    color: #ececec; /* Light gray text for readability */
+    color: #ececec;
     max-width: 600px;
     margin: 20px auto;
     line-height: 1.6;
-  }
-  
-  /* Pixelated Button */
-  .pixel-button {
+}
+
+.pixel-button {
     display: inline-block;
     margin-top: 20px;
     padding: 15px 30px;
@@ -159,14 +207,48 @@ body {
     cursor: pointer;
     transition: 0.2s;
     box-shadow: 5px 5px 0 #333;
-  }
-  
-  .pixel-button:hover {
+}
+
+.pixel-button:hover {
     background-color: #0051ff;
     box-shadow: 3px 3px 0 #333;
     transform: translate(2px, 2px);
-  }
-  
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+    .main-heading {
+        font-size: 28px;
+        padding: 0 15px;
+    }
+
+    .main-paragraph {
+        font-size: 16px;
+        padding: 0 20px;
+        margin: 15px auto;
+    }
+
+    .pixel-button {
+        padding: 12px 24px;
+        font-size: 16px;
+        margin-top: 15px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .main-heading {
+        font-size: 24px;
+    }
+
+    .main-paragraph {
+        font-size: 14px;
+    }
+
+    .pixel-button {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+}
 
 
 /* CSS Styles */
@@ -273,79 +355,92 @@ body {
 
 .discord-recording {
     text-align: center;
-    padding: 20px; /* Optional: Adjust padding */
-    background: rgba(255, 255, 255, 0.8); /* Optional: Add a background for contrast */
-    background-image: url('nightsky.gif'); /* Replace with your image URL */
+    padding: 40px 20px;
+    background-image: url('nightsky.gif');
     background-size: cover;
-    background-position: center; /* Centers the background image */
-    background-repeat: no-repeat; /* Prevents the background from repeating */
-    padding: 40px; /* Optional: Adds padding to the section */
-    border-radius: 0px; /* Optional: Rounds the corners */
-    color: #fff; /* Optional: Changes text color for visibility */
-    border: 1px solid #ccc; /* Light border */
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #fff;
+    border: 1px solid #ccc;
+    position: relative;
+}
+
+.section-title {
+    margin-bottom: 20px;
+    font-size: 28px;
 }
 
 .video-container {
     display: flex;
-    flex-direction: column; /* Stack items vertically */
-    align-items: center; /* Center align items */
+    flex-direction: column;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
 }
 
 .gif-card {
-    width: 100vw; /* Full viewport width */
-    height: 600px; /* Fixed height for cinematic effect, adjust as needed */
-    position: relative; /* Positioning context for absolute children */
-    overflow: hidden; /* Hide overflow */
-    border-radius: 15px; /* Rounded corners */
-   
-    
+    width: 100%;
+    max-width: 1100px;
+    height: auto;
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    margin-bottom: 20px;
 }
 
-
 .gif-image {
-    width: 100%; /* Change this to your desired size */
-    height: 600px; /* Keep aspect ratio */
-    max-width: 1100px; /* Prevent it from becoming too large */
-    border-radius: 10px; /* Optional: Add rounded corners */
-    
-    position: absolute; /* Position absolutely within the card */
-    top: 50%; /* Center vertically */
-    left: 50%; /* Center horizontally */
-    transform: translate(-50%, -50%); /* Center the image */
-    padding-bottom: 30px;
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.overlay-text {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    font-size: 36px;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
 
 .discord-video-container {
-    width: 100%; /* Full width of the container */
-    max-width: 600px; /* Set max width for the video container */
-    margin-top: 20px; /* Space between GIF and video */
+    width: 100%;
+    max-width: 600px;
 }
 
 .discord-video {
-    width: 100%; /* Ensure it takes the full width of its container */
-    height: auto; /* Maintain aspect ratio */
-    border-radius: 15px; /* Round the corners */
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
 }
-
-.discord-recording h2{
-    padding-bottom: 40px;
-    padding-top: 0px;
-
-}
-
 
 @media (max-width: 768px) {
-    .recording-container {
-        flex-direction: column; /* Stack items vertically on smaller screens */
-        align-items: center; /* Center items */
+    .section-title {
+        font-size: 24px;
     }
 
-    .discord-video {
-        max-width: 90%; /* Adjust width for mobile */
+    .gif-card {
+        height: auto;
     }
 
-    .card {
-        max-width: 90%; /* Adjust width for mobile */
+    .overlay-text {
+        font-size: 24px;
+        bottom: 10px;
+        left: 10px;
+    }
+
+    .discord-video-container {
+        max-width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-title {
+        font-size: 20px;
+    }
+
+    .overlay-text {
+        font-size: 20px;
     }
 }
 
@@ -371,65 +466,74 @@ body {
 
 /*testimonials things*/
 
+/* Base styles (keep your existing styles here) */
 .testimonials {
-    background-image: url('nightsky.gif'); /* Optional background image */
+    background-image: url('nightsky.gif');
     background-size: cover;
     background-position: center;
-    padding: 50px 300px;
+    padding: 50px 20px; /* Reduced side padding */
     text-align: center;
-    color: #fff; /* Change this color based on your design */
-    height: 1000px;
-    width: auto;
+    color: #fff;
+    height: auto; /* Changed from fixed height */
+    width: 100%;
 }
 
 .testimonials h2 {
-    font-size: 30px;
-    margin-bottom: 40px;
+    font-size: 24px; /* Slightly smaller for mobile */
+    margin-bottom: 30px;
 }
 
 .testimonial-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    padding-top: 20px;
-    gap: 40px; /* Adjusts spacing between testimonial cards */
+    gap: 20px; /* Reduced gap for mobile */
 }
 
 .testimonial-card {
     background-color: rgba(255, 255, 255, 0.1);
     border: 1px solid #ddd;
     border-radius: 10px;
-    padding: 50px;
-    width: 300px;
-    height: 300px;
+    padding: 20px;
+    width: 100%; /* Full width on mobile */
+    max-width: 300px; /* Max width for larger screens */
+    height: auto; /* Auto height */
     color: #fff;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
-
+    margin-bottom: 20px; /* Added margin between cards */
 }
 
-.testimonial-card:hover {
-    transform: scale(1.05);
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+    .testimonials {
+        padding: 30px 15px;
+    }
+
+    .testimonial-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .testimonial-card {
+        width: 90%;
+        max-width: none;
+    }
+
+    .quote {
+        font-size: 16px;
+    }
+
+    .author {
+        font-size: 14px;
+    }
 }
 
-.avatar {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    margin-bottom: 20px;
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .testimonial-card {
+        width: calc(50% - 20px);
+    }
 }
-
-.quote {
-    font-size: 17px;
-    font-style: italic;
-    margin-bottom: 20px;
-}
-
-.author {
-    font-size: 14px;
-    font-weight: bold;
-}
-
 
 .dotted-border {
     border-top: 0px dotted #000000; /* Change the color and thickness as desired */
@@ -535,5 +639,32 @@ footer {
 
     .social-media {
         justify-content: center;
+    }
+}
+
+/* For tablets and smaller screens */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    /* Example of stacking cards vertically */
+    .card {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    /* Adjusting font size */
+    h1 {
+        font-size: 24px;
+    }
+
+    p {
+        font-size: 16px;
+    }
+
+    /* Stack elements in sections */
+    .video-container {
+        flex-direction: column;
     }
 }
