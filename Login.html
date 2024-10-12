@@ -48,18 +48,21 @@
         </form>
     </div>
 
-    <div id="dashboard" style="display: none;">
-        <div class="user-info">
-            <img id="userPic" src="" alt="Profile Picture">
-            <div>
-                <div class="user-name" id="userName"></div>
-                <p id="userEmail"></p>
+   <div class="container">
+        <div id="dashboard">
+            <div class="user-info">
+                <div class="avatar">J</div>
+                <div>
+                    <div class="user-name">Jazzy Indonesia</div>
+                    <p>indonesia.jazzy9@gmail.com</p>
+                </div>
             </div>
+            <p class="thank-you-message">Thank you for joining TeensForLife! You've contributed to revolutionizing the world.</p>
+            <button class="button">Go to Home Page</button>
+            <button class="button">Logout</button>
         </div>
-        <p class="thank-you-message">Thank you for joining TeensForLife! You've contributed to revolutionizing the world.</p>
-        <button id="homeBtn" class="button">Go to Home Page</button>
-        <button id="logoutBtn" class="button">Logout</button>
     </div>
+    
     <script>
         // Firebase Config
         const firebaseConfig = {
@@ -108,7 +111,7 @@
             });
         };
 
-        const showDashboard = (user) => {
+       const showDashboard = (user) => {
             document.getElementById('loginForm').style.display = 'none';
             document.getElementById('dashboard').style.display = 'block';
             document.getElementById('userName').innerText = user.displayName;
@@ -119,7 +122,7 @@
                 this.src = 'https://via.placeholder.com/80?text=' + user.displayName.charAt(0).toUpperCase();
             };
         };
-
+        
         // Hide dashboard
         const hideDashboard = () => {
             document.getElementById('loginForm').style.display = 'block';
