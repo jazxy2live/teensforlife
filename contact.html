@@ -30,6 +30,22 @@
         </nav>
     </header>
 
+    <script>
+        // Get the toggle icon and navigation links
+        const toggle = document.querySelector('.toggle');
+        const navLinks = document.querySelector('.nav-links');
+    
+        // Add click event to toggle
+        toggle.addEventListener('click', () => {
+            // Toggle the active class on navLinks
+            navLinks.classList.toggle('active');
+    
+            // Rotate the toggle icon
+            toggle.classList.toggle('rotated');
+        });
+    </script>
+    
+
     <div class="contact-form">
         <h2>Contact Us</h2>
         <!-- Give the form an ID for reference -->
