@@ -49,17 +49,28 @@
     </div>
 
     <div id="dashboard" style="display: none;">
-        <h2>Welcome, <span id="userName"></span>!</h2>
-        <img id="userPic" src="" alt="Profile Picture">
-        <p>Thank you for joining TeensForLife! You've contributed to revolutionizing the world.</p>
-        <button id="logoutBtn">Logout</button>
+        <div class="user-info">
+            <img id="userPic" src="" alt="Profile Picture">
+            <div>
+                <div class="user-name" id="userName"></div>
+                <p id="userEmail"></p>
+            </div>
+        </div>
+        <p class="thank-you-message">Thank you for joining TeensForLife! You've contributed to revolutionizing the world.</p>
+        <button id="homeBtn" class="button">Go to Home Page</button>
+        <button id="logoutBtn" class="button">Logout</button>
     </div>
-
     <script>
         // Firebase Config
         const firebaseConfig = {
-            // Your Firebase config here
-        };
+            apiKey: "AIzaSyAyYJOpFEKOueJ82rYpH3ViysP9dT93fyg",
+            authDomain: "teensforlife-66155.firebaseapp.com",
+            projectId: "teensforlife-66155",
+            storageBucket: "teensforlife-66155.appspot.com",
+            messagingSenderId: "572079189052",
+            appId: "1:572079189052:web:d8502932dec58833a1a739",
+            measurementId: "G-NEKSRBQZ4D"
+          };
 
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
@@ -97,13 +108,16 @@
             });
         };
 
-        // Show dashboard
         const showDashboard = (user) => {
             document.getElementById('loginForm').style.display = 'none';
             document.getElementById('dashboard').style.display = 'block';
             document.getElementById('userName').innerText = user.displayName;
             document.getElementById('userEmail').innerText = user.email;
-            document.getElementById('userPic').src = user.photoURL || 'https://via.placeholder.com/80';
+            document.getElementById('userPic').src = user.photoURL || 'https://via.placeholder.com/80?text=' + user.displayName.charAt(0).toUpperCase();
+            document.getElementById('userPic').onerror = function() {
+                this.onerror = null;
+                this.src = 'https://via.placeholder.com/80?text=' + user.displayName.charAt(0).toUpperCase();
+            };
         };
 
         // Hide dashboard
