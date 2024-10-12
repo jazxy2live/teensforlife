@@ -4,29 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - TeensForLife</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
     <link rel="stylesheet" href="login.css">
-    
-    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-    <script src="app.js"></script>
-
-    
 </head>
 <body>
     <header class="navbar">
         <div class="logo">
             <h1>TeensForLife</h1>
         </div>
-        <!-- Toggle icon for mobile -->
         <div class="toggle">
-            <i class="fas fa-bars"></i> <!-- Font Awesome hamburger icon -->
+            <i class="fas fa-bars"></i>
         </div>
         <nav class="nav-links">
             <ul>
-                <li><a href="index.html">Home</a></li>
+                <li><a href="#home">Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="resources.html">Resources</a></li>
                 <li><a href="Login.html" class="login-btn">Login</a></li>
@@ -34,26 +28,11 @@
         </nav>
     </header>
 
- 
-        <script>
-            // Get the toggle icon and navigation links
-            const toggle = document.querySelector('.toggle');
-            const navLinks = document.querySelector('.nav-links');
-        
-            // Add click event to toggle
-            toggle.addEventListener('click', () => {
-                // Toggle the active class on navLinks
-                navLinks.classList.toggle('active');
-        
-                // Rotate the toggle icon
-                toggle.classList.toggle('rotated');
-            });
-        </script>
     
 
 
     <div class="container">
-        <form class="login-form">
+        <form class="login-form" id="loginForm">
             <h1>Login to Your Account</h1>
             <div class="form-group">
                 <label for="username">Username</label>
@@ -65,24 +44,105 @@
             </div>
             <button type="submit" class="login-btn">Login</button>
             <p class="register-link">Don't have an account? <a href="#">Register here</a></p>
+            <button type="button" id="googleLoginBtn" class="login-btn">Login with Google</button>
         </form>
     </div>
 
+    <div id="dashboard" style="display: none;">
+        <h2>Welcome, <span id="userName"></span>!</h2>
+        <img id="userPic" src="" alt="Profile Picture">
+        <p>Thank you for joining TeensForLife! You've contributed to revolutionizing the world.</p>
+        <button id="logoutBtn">Logout</button>
+    </div>
 
-<!-- Logout Button (hidden initially) -->
-<button id="logoutBtn" style="display: none;">Logout</button>
+    <script>
+        // Firebase Config
+        const firebaseConfig = {
+            apiKey: "AIzaSyAyYJOpFEKOueJ82rYpH3ViysP9dT93fyg",
+            authDomain: "teensforlife-66155.firebaseapp.com",
+            projectId: "teensforlife-66155",
+            storageBucket: "teensforlife-66155.appspot.com",
+            messagingSenderId: "572079189052",
+            appId: "1:572079189052:web:d8502932dec58833a1a739",
+            measurementId: "G-NEKSRBQZ4D"
+        };
 
-<!-- Dashboard Section -->
-<div id="dashboard" style="display: none;">
-  <h2>Welcome, <span id="userName"></span>!</h2>
-  <img id="userPic" src="" alt="Profile Picture">
-  <p>You are now logged in.</p>
-</div>
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
 
+        // Google login handler
+        const googleLogin = () => {
+            const provider = new firebase.auth.GoogleAuthProvider();
+            auth.signInWithPopup(provider)
+                .then((result) => {
+                    const user = result.user;
+                    console.log("User Info:", user);
+                    // Check if user exists in Firestore, if not add the user
+                    db.collection("users").doc(user.uid).set({
+                        name: user.displayName,
+                        email: user.email,
+                        photoURL: user.photoURL,
+                        lastLogin: firebase.firestore.FieldValue.serverTimestamp(),
+                    }, { merge: true })
+                    .then(() => {
+                        console.log("User saved to Firestore");
+                        showDashboard(user);
+                    });
+                })
+                .catch((error) => {
+                    console.error("Error during sign-in:", error);
+                });
+        };
 
-    
+        // Logout handler
+        const logout = () => {
+            auth.signOut().then(() => {
+                console.log("User signed out.");
+                hideDashboard();
+            });
+        };
 
-    
+        // Show dashboard
+        const showDashboard = (user) => {
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('dashboard').style.display = 'block';
+            document.getElementById('userName').innerText = user.displayName;
+            document.getElementById('userPic').src = user.photoURL;
+            alert("Thank you for joining TeensForLife! You've contributed to revolutionizing the world.");
+            setTimeout(() => {
+                window.location.href = 'index.html'; // Redirect to home page after 3 seconds
+            }, 3000);
+        };
 
+        // Hide dashboard
+        const hideDashboard = () => {
+            document.getElementById('loginForm').style.display = 'block';
+            document.getElementById('dashboard').style.display = 'none';
+            alert("You've successfully logged out.");
+        };
+
+        // Event listeners
+        document.getElementById('googleLoginBtn').addEventListener('click', googleLogin);
+        document.getElementById('logoutBtn').addEventListener('click', logout);
+
+        // Check if user is already logged in
+        auth.onAuthStateChanged((user) => {
+            if (user) {
+                showDashboard(user);
+            } else {
+                hideDashboard();
+            }
+        });
+
+        // Toggle navbar for mobile
+        const toggle = document.querySelector('.toggle');
+        const navLinks = document.querySelector('.nav-links');
+        toggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            toggle.classList.toggle('rotated');
+        });
+    </script>
 </body>
 </html>
