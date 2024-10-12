@@ -280,7 +280,10 @@ body {
     align-items: center; /* Center vertically */
     font-size: 20px; /* Font size for the avatar character */
     margin-right: 10px; /* Space between avatar and text */
+    border: 2px solid #fff; /* White border around avatar */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
 }
+
 
 .button {
     padding: 10px 15px; /* Adequate padding */
@@ -291,8 +294,22 @@ body {
     cursor: pointer; /* Pointer on hover */
     margin: 5px; /* Space between buttons */
     font-size: 14px; /* Font size for buttons */
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
 }
 
 .button:hover {
     background-color: #45a049; /* Darker shade on hover */
+    outline: 2px solid #fff; /* White outline for focused buttons */
+    outline-offset: 2px; /* Space between outline and button */
+}
+}
+
+@media (max-width: 600px) {
+    #dashboard {
+        max-width: 90%; /* Use more width on smaller screens */
+    }
+
+    .button {
+        font-size: 12px; /* Slightly smaller buttons on small screens */
+    }
 }
