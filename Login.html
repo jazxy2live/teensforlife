@@ -66,7 +66,7 @@
 </div>
 
     
-   <script>
+  <script>
     // Firebase Config
     const firebaseConfig = {
         apiKey: "AIzaSyAyYJOpFEKOueJ82rYpH3ViysP9dT93fyg",
@@ -118,7 +118,7 @@
     // Show dashboard and populate user data
     const showDashboard = (user) => {
         document.getElementById('loginForm').style.display = 'none'; // Hide login form
-        document.getElementById('dashboard').style.display = 'block';
+        document.getElementById('dashboard').style.display = 'block'; // Show dashboard
         
         // Populate user data
         document.getElementById('userName').innerText = user.displayName;
