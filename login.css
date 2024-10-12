@@ -266,6 +266,7 @@ body {
     box-sizing: border-box;
 }
         
+        
 #dashboard {
     border: 1px solid #ccc; /* Light border for the dashboard */
     border-radius: 8px; /* Rounded corners */
@@ -323,5 +324,11 @@ body {
 
     .button {
         font-size: 12px; /* Slightly smaller buttons on small screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        margin-top: 120px; /* Increase top margin for small screens */
     }
 }
