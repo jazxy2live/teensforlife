@@ -117,7 +117,7 @@
 
     // Show dashboard and populate user data
     const showDashboard = (user) => {
-        document.getElementById('loginForm').style.display = 'none';
+        document.getElementById('loginForm').style.display = 'none'; // Hide login form
         document.getElementById('dashboard').style.display = 'block';
         
         // Populate user data
@@ -132,10 +132,10 @@
         };
     };
 
-    // Hide dashboard
+    // Hide dashboard and reset login form
     const hideDashboard = () => {
-        document.getElementById('loginForm').style.display = 'block';
-        document.getElementById('dashboard').style.display = 'none';
+        document.getElementById('loginForm').style.display = 'block'; // Show login form
+        document.getElementById('dashboard').style.display = 'none'; // Hide dashboard
     };
 
     // Event listeners
@@ -162,6 +162,7 @@
         toggle.classList.toggle('rotated');
     });
 </script>
+
 
     
 
