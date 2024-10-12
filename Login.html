@@ -113,22 +113,26 @@
         });
     };
 
-    // Show dashboard and populate user data
     const showDashboard = (user) => {
-        document.getElementById('loginForm').style.display = 'none'; // Hide login form
-        document.getElementById('dashboard').style.display = 'block'; // Show dashboard
-        
-        // Populate user data
-        document.getElementById('userName').innerText = user.displayName;
-        document.getElementById('userEmail').innerText = user.email;
+    document.getElementById('loginForm').style.display = 'none'; // Hide login form
+    document.getElementById('dashboard').style.display = 'block'; // Show dashboard
 
-        const userPic = document.getElementById('userPic');
-        userPic.src = user.photoURL || 'https://via.placeholder.com/80?text=' + user.displayName.charAt(0).toUpperCase();
-        userPic.onerror = function() {
-            this.onerror = null; // Prevents infinite loop if placeholder fails
-            this.src = 'https://via.placeholder.com/80?text=' + user.displayName.charAt(0).toUpperCase();
-        };
+    // Populate user data
+    document.getElementById('userName').innerText = user.displayName;
+    document.getElementById('userEmail').innerText = user.email;
+
+    const userPic = document.getElementById('userPic');
+    userPic.src = user.photoURL || 'https://via.placeholder.com/80?text=' + user.displayName.charAt(0).toUpperCase();
+    userPic.onerror = function() {
+        this.onerror = null; // Prevents infinite loop if placeholder fails
+        this.src = 'https://via.placeholder.com/80?text=' + user.displayName.charAt(0).toUpperCase();
     };
+};
+
+// Ensure this is called when the page loads or whenever needed
+document.addEventListener("DOMContentLoaded", function() {
+    hideDashboard(); // Ensure dashboard is hidden initially
+});
 
     // Hide dashboard and reset login form
     const hideDashboard = () => {
