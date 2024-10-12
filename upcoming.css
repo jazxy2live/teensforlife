@@ -9,6 +9,8 @@ body {
     padding: 0;
     background: url('sr2bddd005c62aws3.png') ;
     background-size: cover;
+    background-repeat: no-repeat
+    
 }
 
 html, body {
