@@ -9,6 +9,13 @@
     src: url(joystix\ monospace.otf);
 
 
+/* Example CSS reset to remove margins and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Ensures padding and borders are included in the element's total width and height */
+}
+
 }
 html, body {
     overflow-x: hidden;
@@ -245,10 +252,13 @@ body {
         margin: 0;
         padding: 0;
         background-color: #f0f2f5;
+        overflow: hidden; /* Prevents scrollbars, useful if the white space is relate
     }
 
     .container {
     display: flex; 
+    flex-direction: column; /* Ensure elements stack correctly */
+    height: auto; /* Allow the height to adjust based on content */
     justify-content: center; 
     align-items: center; 
     padding: 20px; /* Adds some padding around the container */
