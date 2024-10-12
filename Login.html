@@ -46,9 +46,7 @@
             <p class="register-link">Don't have an account? <a href="#">Register here</a></p>
             <button type="button" id="googleLoginBtn" class="login-btn">Login with Google</button>
         </form>
-    </div>
 
-  <div class="container">
     <div id="dashboard">
         <div class="user-info">
             <div class="avatar">J</div>
@@ -134,7 +132,7 @@
 
     // Hide dashboard and reset login form
     const hideDashboard = () => {
-        document.getElementById('loginForm').style.display = 'flex'; // Show login form
+        document.getElementById('loginForm').style.display = 'block'; // Show login form
         document.getElementById('dashboard').style.display = 'none'; // Hide dashboard
     };
 
