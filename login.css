@@ -246,11 +246,13 @@ body {
         padding: 0;
         background-color: #f0f2f5;
     }
+
     .container {
         max-width: 1200px;
         margin: 0 auto;
         padding: 20px;
     }
+    
     #dashboard {
         background-color: #ffffff;
         border-radius: 8px;
@@ -266,9 +268,16 @@ body {
         align-items: center;
         margin-bottom: 20px;
     }
-    .user-info img {
+    .user-info .avatar {
         width: 80px;
         height: 80px;
+        background-color: #4CAF50;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 36px;
+        font-weight: bold;
         border-radius: 50%;
         margin-right: 20px;
     }
@@ -278,19 +287,15 @@ body {
     }
     .thank-you-message {
         margin-bottom: 20px;
-        font-style: italic;
         color: #65676b;
     }
     .button {
-        background-color: #1877f2;
-        color: #ffffff;
+        background-color: #f0f2f5;
+        color: #000;
         border: none;
         padding: 10px 20px;
         border-radius: 5px;
         cursor: pointer;
-        font-size: 16px;
-        transition: background-color 0.3s;
-    }
-    .button:hover {
-        background-color: #166fe5;
+        font-size: 14px;
+        margin-right: 10px;
     }
