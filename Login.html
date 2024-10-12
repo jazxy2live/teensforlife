@@ -66,96 +66,102 @@
 </div>
 
     
-    <script>
-        // Firebase Config
-        const firebaseConfig = {
-            apiKey: "AIzaSyAyYJOpFEKOueJ82rYpH3ViysP9dT93fyg",
-            authDomain: "teensforlife-66155.firebaseapp.com",
-            projectId: "teensforlife-66155",
-            storageBucket: "teensforlife-66155.appspot.com",
-            messagingSenderId: "572079189052",
-            appId: "1:572079189052:web:d8502932dec58833a1a739",
-            measurementId: "G-NEKSRBQZ4D"
-          };
+   <script>
+    // Firebase Config
+    const firebaseConfig = {
+        apiKey: "AIzaSyAyYJOpFEKOueJ82rYpH3ViysP9dT93fyg",
+        authDomain: "teensforlife-66155.firebaseapp.com",
+        projectId: "teensforlife-66155",
+        storageBucket: "teensforlife-66155.appspot.com",
+        messagingSenderId: "572079189052",
+        appId: "1:572079189052:web:d8502932dec58833a1a739",
+        measurementId: "G-NEKSRBQZ4D"
+    };
 
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-        const auth = firebase.auth();
-        const db = firebase.firestore();
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const db = firebase.firestore();
 
-        // Google login handler
-        const googleLogin = () => {
-            const provider = new firebase.auth.GoogleAuthProvider();
-            auth.signInWithPopup(provider)
-                .then((result) => {
-                    const user = result.user;
-                    console.log("User Info:", user);
-                    db.collection("users").doc(user.uid).set({
-                        name: user.displayName,
-                        email: user.email,
-                        photoURL: user.photoURL,
-                        lastLogin: firebase.firestore.FieldValue.serverTimestamp(),
-                    }, { merge: true })
-                    .then(() => {
-                        console.log("User saved to Firestore");
-                        showDashboard(user);
-                    });
-                })
-                .catch((error) => {
-                    console.error("Error during sign-in:", error);
+    // Google login handler
+    const googleLogin = () => {
+        const provider = new firebase.auth.GoogleAuthProvider();
+        auth.signInWithPopup(provider)
+            .then((result) => {
+                const user = result.user;
+                console.log("User Info:", user);
+                // Store user data in Firestore
+                db.collection("users").doc(user.uid).set({
+                    name: user.displayName,
+                    email: user.email,
+                    photoURL: user.photoURL,
+                    lastLogin: firebase.firestore.FieldValue.serverTimestamp(),
+                }, { merge: true })
+                .then(() => {
+                    console.log("User saved to Firestore");
+                    showDashboard(user); // Show dashboard with user info
                 });
-        };
-
-        // Logout handler
-        const logout = () => {
-            auth.signOut().then(() => {
-                console.log("User signed out.");
-                hideDashboard();
+            })
+            .catch((error) => {
+                console.error("Error during sign-in:", error);
             });
-        };
+    };
 
-       const showDashboard = (user) => {
-            document.getElementById('loginForm').style.display = 'none';
-            document.getElementById('dashboard').style.display = 'block';
-            document.getElementById('userName').innerText = user.displayName;
-            document.getElementById('userEmail').innerText = user.email;
-            document.getElementById('userPic').src = user.photoURL || 'https://via.placeholder.com/80?text=' + user.displayName.charAt(0).toUpperCase();
-            document.getElementById('userPic').onerror = function() {
-                this.onerror = null;
-                this.src = 'https://via.placeholder.com/80?text=' + user.displayName.charAt(0).toUpperCase();
-            };
-        };
+    // Logout handler
+    const logout = () => {
+        auth.signOut().then(() => {
+            console.log("User signed out.");
+            hideDashboard(); // Hide dashboard on logout
+        });
+    };
+
+    // Show dashboard and populate user data
+    const showDashboard = (user) => {
+        document.getElementById('loginForm').style.display = 'none';
+        document.getElementById('dashboard').style.display = 'block';
         
-        // Hide dashboard
-        const hideDashboard = () => {
-            document.getElementById('loginForm').style.display = 'block';
-            document.getElementById('dashboard').style.display = 'none';
+        // Populate user data
+        document.getElementById('userName').innerText = user.displayName;
+        document.getElementById('userEmail').innerText = user.email;
+
+        const userPic = document.getElementById('userPic');
+        userPic.src = user.photoURL || 'https://via.placeholder.com/80?text=' + user.displayName.charAt(0).toUpperCase();
+        userPic.onerror = function() {
+            this.onerror = null; // Prevents infinite loop if placeholder fails
+            this.src = 'https://via.placeholder.com/80?text=' + user.displayName.charAt(0).toUpperCase();
         };
+    };
 
-        // Event listeners
-        document.getElementById('googleLoginBtn').addEventListener('click', googleLogin);
-        document.getElementById('logoutBtn').addEventListener('click', logout);
-        document.getElementById('homeBtn').addEventListener('click', () => {
-            window.location.href = 'index.html';
-        });
+    // Hide dashboard
+    const hideDashboard = () => {
+        document.getElementById('loginForm').style.display = 'block';
+        document.getElementById('dashboard').style.display = 'none';
+    };
 
-        // Check if user is already logged in
-        auth.onAuthStateChanged((user) => {
-            if (user) {
-                showDashboard(user);
-            } else {
-                hideDashboard();
-            }
-        });
-    
-        // Toggle navbar for mobile
-        const toggle = document.querySelector('.toggle');
-        const navLinks = document.querySelector('.nav-links');
-        toggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            toggle.classList.toggle('rotated');
-        });
-    </script>
+    // Event listeners
+    document.getElementById('googleLoginBtn').addEventListener('click', googleLogin);
+    document.getElementById('logoutBtn').addEventListener('click', logout);
+    document.getElementById('homeBtn').addEventListener('click', () => {
+        window.location.href = 'index.html'; // Navigate to home page
+    });
+
+    // Check if user is already logged in
+    auth.onAuthStateChanged((user) => {
+        if (user) {
+            showDashboard(user); // Show dashboard if user is logged in
+        } else {
+            hideDashboard(); // Hide dashboard if no user is logged in
+        }
+    });
+
+    // Toggle navbar for mobile
+    const toggle = document.querySelector('.toggle');
+    const navLinks = document.querySelector('.nav-links');
+    toggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        toggle.classList.toggle('rotated');
+    });
+</script>
 
     
 
