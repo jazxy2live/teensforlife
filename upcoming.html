@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upcoming Webinars/Workshops</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="upcoming.css"> <!-- Link to your CSS -->
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">
+            <h1>TeensForLife</h1>
+        </div>
+        <!-- Toggle icon for mobile -->
+        <div class="toggle">
+            <i class="fas fa-bars"></i> <!-- Font Awesome hamburger icon -->
+        </div>
+        <nav class="nav-links">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="Login.html" class="login-btn">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <script>
+        // Get the toggle icon and navigation links
+        const toggle = document.querySelector('.toggle');
+        const navLinks = document.querySelector('.nav-links');
+    
+        // Add click event to toggle
+        toggle.addEventListener('click', () => {
+            // Toggle the active class on navLinks
+            navLinks.classList.toggle('active');
+    
+            // Rotate the toggle icon
+            toggle.classList.toggle('rotated');
+        });
+    </script>
+    
+    <main class="container">
+        <h1>Upcoming Webinars/Workshops</h1>
+        <p>Currently, there are no upcoming webinars or workshops scheduled. Please check back later!</p>
+    </main>
+    
+
+</body>
+</html>
