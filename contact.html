@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="contact.css"> <!-- Link to your CSS -->
+
+    <!-- Firebase scripts -->
+    <script type="module" src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">
+            <h1>TeensForLife</h1>
+        </div>
+        <!-- Toggle icon for mobile -->
+        <div class="toggle">
+            <i class="fas fa-bars"></i> <!-- Font Awesome hamburger icon -->
+        </div>
+        <nav class="nav-links">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="Login.html" class="login-btn">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="contact-form">
+        <h2>Contact Us</h2>
+        <!-- Give the form an ID for reference -->
+        <form id="contactForm">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+    
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+    
+            <label for="message">Message</label>
+            <textarea id="message" name="message" required></textarea>
+    
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+
+    <script type="module">
+        // Firebase and Firestore import
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+        import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyAyYJOpFEKOueJ82rYpH3ViysP9dT93fyg",
+            authDomain: "teensforlife-66155.firebaseapp.com",
+            projectId: "teensforlife-66155",
+            storageBucket: "teensforlife-66155.appspot.com",
+            messagingSenderId: "572079189052",
+            appId: "1:572079189052:web:d8502932dec58833a1a739",
+            measurementId: "G-NEKSRBQZ4D"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // Get the form element by ID
+        const form = document.getElementById('contactForm');
+
+        // Add event listener for form submission
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault(); // Prevent the default form submission
+
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            try {
+                // Add a new document to the "contacts" collection in Firestore
+                const docRef = await addDoc(collection(db, "contacts"), {
+                    name: name,
+                    email: email,
+                    message: message,
+                    timestamp: serverTimestamp()
+                });
+
+                console.log("Document written with ID: ", docRef.id);
+                alert("Message sent successfully!");
+                form.reset(); // Clear the form after submission
+            } catch (error) {
+                console.error("Error adding document: ", error);
+                alert("An error occurred. Please try again.");
+            }
+        });
+    </script>
+
+</body>
+</html>
