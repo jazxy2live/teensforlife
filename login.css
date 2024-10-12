@@ -240,61 +240,57 @@ body {
 
 /*DASHBOARD SECTION*/
 
-.dashboard-card {
-            background-color: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            padding: 20px;
-            margin-top: 20px;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .user-info {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        .user-info img {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            margin-right: 20px;
-        }
-        .user-name {
-            font-size: 24px;
-            font-weight: bold;
-        }
-        .thank-you-message {
-            margin-bottom: 20px;
-            font-style: italic;
-            color: #65676b;
-        }
-        .button {
-            background-color: #1877f2;
-            color: #ffffff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s;
-        }
-        .button:hover {
-            background-color: #166fe5;
-        }
-        .logout-btn {
-            background-color: #e4e6eb;
-            color: #1c1e21;
-        }
-        .logout-btn:hover {
-            background-color: #d8dadf;
-        }
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            .dashboard-card {
-                margin: 20px;
-            }
-        }
+    body {
+        font-family: "pixel", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f2f5;
+    }
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    #dashboard {
+        background-color: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        padding: 20px;
+        margin-top: 20px;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .user-info {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+    .user-info img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        margin-right: 20px;
+    }
+    .user-name {
+        font-size: 24px;
+        font-weight: bold;
+    }
+    .thank-you-message {
+        margin-bottom: 20px;
+        font-style: italic;
+        color: #65676b;
+    }
+    .button {
+        background-color: #1877f2;
+        color: #ffffff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s;
+    }
+    .button:hover {
+        background-color: #166fe5;
+    }
