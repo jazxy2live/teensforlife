@@ -58,13 +58,7 @@
     <script>
         // Firebase Config
         const firebaseConfig = {
-            apiKey: "AIzaSyAyYJOpFEKOueJ82rYpH3ViysP9dT93fyg",
-            authDomain: "teensforlife-66155.firebaseapp.com",
-            projectId: "teensforlife-66155",
-            storageBucket: "teensforlife-66155.appspot.com",
-            messagingSenderId: "572079189052",
-            appId: "1:572079189052:web:d8502932dec58833a1a739",
-            measurementId: "G-NEKSRBQZ4D"
+            // Your Firebase config here
         };
 
         // Initialize Firebase
@@ -79,7 +73,6 @@
                 .then((result) => {
                     const user = result.user;
                     console.log("User Info:", user);
-                    // Check if user exists in Firestore, if not add the user
                     db.collection("users").doc(user.uid).set({
                         name: user.displayName,
                         email: user.email,
@@ -109,23 +102,22 @@
             document.getElementById('loginForm').style.display = 'none';
             document.getElementById('dashboard').style.display = 'block';
             document.getElementById('userName').innerText = user.displayName;
-            document.getElementById('userPic').src = user.photoURL;
-            alert("Thank you for joining TeensForLife! You've contributed to revolutionizing the world.");
-            setTimeout(() => {
-                window.location.href = 'index.html'; // Redirect to home page after 3 seconds
-            }, 3000);
+            document.getElementById('userEmail').innerText = user.email;
+            document.getElementById('userPic').src = user.photoURL || 'https://via.placeholder.com/80';
         };
 
         // Hide dashboard
         const hideDashboard = () => {
             document.getElementById('loginForm').style.display = 'block';
             document.getElementById('dashboard').style.display = 'none';
-            alert("You've successfully logged out.");
         };
 
         // Event listeners
         document.getElementById('googleLoginBtn').addEventListener('click', googleLogin);
         document.getElementById('logoutBtn').addEventListener('click', logout);
+        document.getElementById('homeBtn').addEventListener('click', () => {
+            window.location.href = 'index.html';
+        });
 
         // Check if user is already logged in
         auth.onAuthStateChanged((user) => {
@@ -135,7 +127,7 @@
                 hideDashboard();
             }
         });
-
+    
         // Toggle navbar for mobile
         const toggle = document.querySelector('.toggle');
         const navLinks = document.querySelector('.nav-links');
@@ -144,5 +136,9 @@
             toggle.classList.toggle('rotated');
         });
     </script>
+
+    
+
+
 </body>
 </html>
